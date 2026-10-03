@@ -1,95 +1,55 @@
-# Business AI for India and Real-World Decision Making
+# Operational AI Patterns for Indian Businesses & Startups
 
-The most valuable AI systems are not the most impressive demos. They are the ones that help real people do meaningful work better.
+Focus on patterns that transfer across MSME tools, manufacturing, retail, hospitality, logistics, business-automation startups, and selective GovTech modules.
 
-## 1. Where AI helps in real businesses
+## Where constrained agents create real value
 
-Good use cases often involve:
-- repetitive document processing
-- knowledge lookup across SOPs and rules
-- summarizing internal notes
-- triaging service requests
-- extracting structured data from forms
-- intelligent assistant workflows for teams
+High-frequency, structured-enough workflows:
+- Document extraction and classification (invoices, POs, forms, compliance docs)
+- Grounded knowledge lookup over SOPs, product catalogs, policy notes, manuals
+- Triage and routing (support tickets, internal requests, escalations)
+- Status and inventory queries with hard safety bounds
+- Multi-step internal processes with explicit human gates (approvals, external messages, money movement)
 
-## 2. High-value domains
+These appear in almost every operational domain. Mastering the pattern is more valuable than domain-specific theatre.
 
-### MSME workflows
-Small and medium enterprises often need:
-- vendor data summarization
-- document classification
-- invoice and purchase review
-- customer support and ticket routing
-- staff knowledge assist
+## Sector mapping (same skills, different data)
 
-### GovTech / public service flows
-Useful AI tasks include:
-- document triage
-- form extraction
-- form validation
-- policy lookup support
-- service desk acceleration
+| Pattern | MSME / Private business | Manufacturing / Chemical | Retail / Hospitality | Business automation startup / GovTech module |
+|---------|-------------------------|---------------------------|----------------------|---------------------------------------------|
+| Document agent | Invoice / PO processing | Safety / batch records | Order / reservation docs | Form extraction, circular lookup |
+| Grounded Q&A | Internal SOPs, pricing | Equipment manuals, procedures | Product knowledge, house rules | Policy / scheme documents |
+| Triage agent | Customer / vendor queries | Maintenance tickets | Guest / order issues | Service desk, grievance routing |
+| Structured query | Inventory, orders | Spare parts, batch status | Stock, room availability | Case / application status |
+| Workflow + gates | Purchase approval | Permit-to-work style checks | Exception handling | Multi-step citizen/business flows |
 
-### Manufacturing / chemical plant context
-Useful examples:
-- SOP summarization
-- maintenance workflow assistant
-- equipment troubleshooting support
-- procedural checklists
-- safety documentation support
+## Decision framework (use this every time)
 
-## 3. What should remain human-owned
+- Deterministic validation / compliance → rules or code, not the LLM
+- Needs company-specific knowledge → RAG or structured retrieval
+- Needs to act on systems → tool calling with least privilege
+- High-risk or irreversible → human approval gate + audit log
+- Ambiguous or novel → escalate; do not let the agent freestyle
 
-Do not hand over these to the model blindly:
-- policy decisions
-- risk and compliance decisions
-- final escalation or approvals
-- anything involving customer harm or safety-critical actions
-- business strategy and resource decisions
+## What early-stage startups actually need
 
-## 4. Human decision framework
+People who can:
+1. Turn a messy operational description into a tight PRD and acceptance criteria
+2. Design tools and constraints so the agent cannot wander
+3. Ground outputs and detect when grounding failed
+4. Ship a small, observable, evaluable workflow
+5. Honestly state residual risks
 
-A good rule:
-- if the task is deterministic, encode it in rules
-- if the task requires memory and lookup, use RAG
-- if it requires action, use tool calling
-- if it needs review, use LLM-as-judge or human review
+They do not need another general-purpose chatbot.
 
-## 5. Example business workflow design
+## Practical starting rule
 
-A small workflow assistant might:
-1. receive a user request
-2. retrieve matching policy or SOP
-3. summarize the relevant content
-4. ask for missing information
-5. suggest a structured answer
-6. require approval before sending a final output
+Pick one narrow workflow with measurable pain (time spent, error rate, or volume).  
+Document current process → define must-not-do list → build constrained agent → evaluate → only then expand.
 
-This is much better than a freeform “superassistant” with no checkpoints.
+Autonomy is a cost, not a goal. Reliability and clear ownership are the goals.
 
-## 6. Real product thinking
+## Next
 
-The best AI product is often:
-- narrow in scope
-- grounded in real documents or systems
-- easy to validate
-- easy to explain to end users
-- safe under failure conditions
-
-## 7. Practical advice for a builder
-
-Start small:
-- one workflow
-- one clear user problem
-- one set of trusted rules
-- one validation method
-- one human approval point
-
-Then expand only when the system is already working in a controlled environment.
-
-## 8. Next steps
-
-Read:
-- projects/project-04-msme-workflow-assistant.md
-- resources/curated-reading-list.md
-- resources/reference-links.md
+- `docs/spec-driven-agent-workflows.md`
+- Projects in `/projects` (all designed to be sector-agnostic evidence)
