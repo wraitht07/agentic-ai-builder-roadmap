@@ -10,6 +10,8 @@ This repository unifies three sources and keeps only what a pre-final-year B.E. 
 | **awesome-agentic-ai-zh** | Staged learning path (Stage 0–8), hands-on practices, curated resource tables, Track A (CLI power-user) / Track B (Agent Builder) | Full multi-language mirrors, outreach files, maintainer checklists |
 | **hello-agents** (Datawhale) | Core chapter map, classic paradigms (ReAct / Plan-and-Solve / Reflection), co-creation projects, PDF links, interview notes, context-engineering & evaluation depth | Pure Chinese-only narrative, low-code platform walkthroughs that are already covered elsewhere, redundant “what is an agent” intros |
 
+**Status**: All stages 00–08, exercises, projects, code skeletons and resource maps are complete. Use `PROGRESS.md` to track your own progress.
+
 **Core outcome**  
 By the end you will be able to:
 - Explain LLMs in practical terms (tokens, context, attention, generation, why fluency ≠ truth)
@@ -30,67 +32,68 @@ By the end you will be able to:
 
 ### Phase 0 – Foundations (skip if already solid)
 - Python + Git + terminal + JSON/YAML basics  
-- Source: Stage 0 practice from awesome-agentic-ai-zh (kept & adapted)  
+- Stage: `stages/00-foundations.md`  
 - Checkpoint: can fetch public API data, write a file, commit with Git
 
 ### Phase 1 – LLM Foundations
 - Tokens, context windows, embeddings, attention, decoding, sampling  
 - Why hallucination is a probability problem  
-- Docs in this repo: `docs/llm-under-the-hood.md`, `docs/context-window-and-token-optimization.md`  
+- Stages: `01-llm-basics.md`  
+- Docs: `docs/llm-under-the-hood.md`, `docs/context-window-and-token-optimization.md`  
 - Deep theory: Hello-Agents Chapter 3  
-- Checkpoint: can explain why a long noisy prompt often hurts quality
+- Exercise: `exercises/exercise-01-hello-llm.md`
 
 ### Phase 2 – Agents & Tool Use
 - Tool schemas, ReAct / Plan-and-Solve / Reflection loops  
-- Safe agent behavior and constraint design  
+- Stages: `02-prompt-engineering.md`, `03-tool-use-and-hello-agent.md`  
 - Docs: `docs/tool-calling-and-agents.md`  
 - Classic implementations: Hello-Agents Chapter 4  
-- Hands-on: Stage 3 (first agent loop) from awesome  
-- Checkpoint: can write a tool schema and force the model to use it
+- Code: `code/react_skeleton.py`  
+- Exercise: `exercises/exercise-02-tool-use.md`
 
 ### Phase 3 – Context Engineering & Memory
 - Context trimming, summarization, RAG vs prompt stuffing  
-- Token budgeting and hygiene  
+- Stage: `06-memory-rag.md`  
 - Docs: `docs/context-window-and-token-optimization.md`  
 - Deep dive: Hello-Agents Chapters 8 & 9  
-- Checkpoint: can design a minimal RAG pipeline that actually improves answers
+- Exercise: `exercises/exercise-03-rag-mini-demo.md`
 
 ### Phase 4 – Production Reliability
 - Evals, LLM-as-judge, hallucination detection, human-approval loops  
-- Observability and rollback  
+- Stage: `07-production-reliability.md`  
 - Docs: `docs/hallucination-detection.md`  
-- Hello-Agents Chapter 12 + Stage 7 from awesome  
-- Checkpoint: can write an eval rubric and catch a known failure mode
+- Hello-Agents Chapter 12  
+- Exercise: `exercises/exercise-04-agent-eval.md`
 
 ### Phase 5 – Business & Domain Judgment (India focus)
 - When to use deterministic rules vs RAG vs tools vs humans  
 - PRD → Spec → Plan → Diff review workflow  
-- Real domains: MSME ops, chemical-plant SOPs, local services, GovTech document flows  
 - Docs: `docs/business-ai-for-india.md`, `docs/spec-driven-agent-workflows.md`  
-- Projects: see `/projects`
+- Projects: `/projects` (01–05)
 
 ## Two tracks (choose one primary)
 
 | Goal | Track | Entry |
 |------|-------|-------|
-| Get work done with Claude Code / Codex / OpenCode / Cursor | **Track A – CLI Power User** | Stage 5 + A1–A3 style practices |
+| Get work done with Claude Code / Codex / OpenCode / Cursor | **Track A – CLI Power User** | Stage 5 (`05-cli-ecosystem.md`) |
 | Write your own agent loops, tools, workflows and services | **Track B – Agent Builder** | Stage 3 → 4 → 6 → 7 |
 
-Both tracks share Phase 0–2. Everyday non-coding users can stop after Phase 1 + the everyday-user notes in the original awesome repo.
+Both tracks share Phase 0–2. Stage 8 (Interfaces & Safety) is recommended for everyone before production use.
 
-## Repository structure (unified)
+## Repository structure (complete)
 
 ```text
 agentic-ai-builder-roadmap/
 ├── README.md                          ← you are here
-├── docs/                              ← practical explainers (kept + enhanced)
+├── PROGRESS.md                        ← personal checklist
+├── docs/                              ← practical explainers
 │   ├── llm-under-the-hood.md
 │   ├── tool-calling-and-agents.md
 │   ├── context-window-and-token-optimization.md
 │   ├── hallucination-detection.md
 │   ├── spec-driven-agent-workflows.md
 │   └── business-ai-for-india.md
-├── stages/                            ← staged path adapted from awesome-agentic-ai-zh (English primary)
+├── stages/                            ← full staged path (00–08)
 │   ├── 00-foundations.md
 │   ├── 01-llm-basics.md
 │   ├── 02-prompt-engineering.md
@@ -100,14 +103,15 @@ agentic-ai-builder-roadmap/
 │   ├── 06-memory-rag.md
 │   ├── 07-production-reliability.md
 │   └── 08-interfaces-and-safety.md
-├── exercises/                         ← small runnable checks
-├── projects/                          ← portfolio-depth projects (India/MSME focus + selected hello-agents co-creation)
+├── exercises/                         ← four progressive exercises
+├── projects/                          ← five portfolio projects (India/MSME focus)
 ├── resources/
 │   ├── official-docs.md
 │   ├── curated-reading-list.md
 │   ├── reference-links.md
-│   └── hello-agents-map.md            ← chapter map + PDF links
-├── code/                              ← minimal reusable snippets (ReAct skeleton, tool schema, etc.)
+│   └── hello-agents-map.md
+├── code/
+│   └── react_skeleton.py
 └── LICENSE
 ```
 
@@ -123,10 +127,10 @@ agentic-ai-builder-roadmap/
 
 ## Key external anchors (do not reinvent)
 
-- **Deep systematic tutorial**: [Hello-Agents](https://github.com/datawhalechina/hello-agents) (and its English README)  
+- **Deep systematic tutorial**: [Hello-Agents](https://github.com/datawhalechina/hello-agents)  
 - **PDF releases**: https://github.com/datawhalechina/hello-agents/releases/latest  
 - **Official docs**: Anthropic, OpenAI, Google AI, Ollama, Model Context Protocol  
-- **Self-built framework reference**: [HelloAgents](https://github.com/jjyaoao/helloagents) (matches the tutorial)
+- **Self-built framework reference**: [HelloAgents](https://github.com/jjyaoao/helloagents)
 
 ## Final note
 
@@ -135,4 +139,4 @@ It is deciding what should be automated, constraining the agent, validating ever
 
 That is what turns an LLM demo into a useful system for real Indian workflows.
 
-Start at `stages/00-foundations.md` (or jump to Stage 1 if the four foundation checks already pass).
+**Start here**: open `PROGRESS.md` and begin at `stages/00-foundations.md` (or jump to Stage 1 if the four foundation checks already pass).
